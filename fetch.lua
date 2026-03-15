@@ -27,13 +27,18 @@ end
 local date = os.date("%Y/%m/%d %H:%M:%S")
 
 local colors = {
-    "\27[31m",
-    "\27[32m",
-    "\27[33m",
-    "\27[34m",
-    "\27[35m",
-    "\27[36m",
-    "\27[37m",
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  91,
+  92,
+  93,
+  94,
+  95,
+  96
 }
 
 local text =
@@ -46,7 +51,7 @@ math.randomseed(os.time())
 
 for i = 1, #text do
   local char = string.sub(text, i, i)
-  local color = colors[math.random(#colors)]
+  local color = "\27[" .. tostring(colors[math.random(#colors)]) .. "m"
   io.write(color .. char)
 end
 
