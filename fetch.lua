@@ -9,15 +9,12 @@ if sep == "\\" then
   is_unix = false
 end
 
-local os_ = ""
-local kernel = ""
+local system = ""
 
 if is_unix then
-  os_ = io.popen("uname -o"):read("*a")
-  kernel = io.popen("uname -s"):read("*a")
+  system = io.popen("uname -o"):read("*a")
 else
-  os_ = io.popen("ver"):read("*a")
-  kernel = os.getenv("OS") or os_
+  system = io.popen("ver"):read("*a")
 end
 
 local date = os.date("%Y/%m/%d %H:%M:%S")
@@ -34,8 +31,8 @@ local colors = {
 
 local text =
   "\\    /\\     " .. machine .. "\n" ..
-  " )  ( ')    " .. os_:gsub("\n", "") .. "\n" ..
-  " (  /  )    " .. kernel:gsub("\n", "") .. "\n" ..
+  " )  ( ')    " .. string.rep("-", #machine) .. "\n" ..
+  " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
   "  \\(__)|    " .. date
 
 math.randomseed(os.time())
