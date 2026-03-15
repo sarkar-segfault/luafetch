@@ -3,16 +3,13 @@ local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "unknown"
 local machine = user .. "@" .. host
 
 local is_unix = true
-
 if package.config:sub(1, 1) == "\\" then
   is_unix = false
 end
 
-local cmd = ""
+local cmd = "powershell -Command \"(Get-CimInstance Win32_OperatingSystem).Caption\""
 if is_unix then
   cmd = "uname -o"
-else
-  cmd = "ver"
 end
 
 local pipe, err = io.popen(cmd)
