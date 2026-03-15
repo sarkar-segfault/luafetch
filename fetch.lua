@@ -1,5 +1,5 @@
 local user = os.getenv("USERNAME") or os.getenv("USER") or "unknown"
-local host = os.getenv("COMPUTERNAME") or os.getenv("HOSTNAME") or "unknown"
+local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "unknown"
 local machine = user .. "@" .. host
 
 local sep = package.config:sub(1, 1)
