@@ -2,19 +2,29 @@ local user = os.getenv("USERNAME") or os.getenv("USER") or "unknown"
 local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "unknown"
 local machine = user .. "@" .. host
 
-local sep = package.config:sub(1, 1)
 local is_unix = true
 
-if sep == "\\" then
+if package.config:sub(1, 1) == "\\" then
   is_unix = false
 end
 
-local system = ""
-
+local cmd = ""
 if is_unix then
-  system = io.popen("uname -o"):read("*a")
+  cmd = "uname -o"
 else
-  system = io.popen("ver"):read("*a")
+  cmd = "ver"
+end
+
+local pipe, err = io.popen(cmd)
+if not pipe then
+  print(err)
+  os.exit(1)
+end
+
+local system = pipe:read("*a")
+if not system then
+  print(string.format("failed to read pipe from io.popen(\"%s\")", cmd))
+  os.exit(1)
 end
 
 local date = os.date("%Y/%m/%d %H:%M:%S")
