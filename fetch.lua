@@ -35,7 +35,7 @@ local colors = {
 local text =
   "\\    /\\     " .. machine .. "\n" ..
   " )  ( ')    " .. os_:gsub("\n", "") .. "\n" ..
-  " (  /  )    " .. kernel .. "\n" ..
+  " (  /  )    " .. kernel:gsub("\n", "") .. "\n" ..
   "  \\(__)|    " .. date
 
 math.randomseed(os.time())
