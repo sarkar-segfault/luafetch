@@ -36,26 +36,19 @@ for i, v in ipairs(args) do
     coloring = "normal"
   elseif v == "--bright" then
     coloring = "bright"
+  elseif v == "--no-machine" then
+    machine = ""
+  elseif v == "--no-system" then
+    system = ""
+  elseif v == "--no-date" then
+    date = ""
   else
     print("encountered invalid argument: ", v)
     os.exit(1)
   end
 end
 
-local colors = {
-  "31",
-  "32",
-  "33",
-  "34",
-  "35",
-  "36",
-  "91",
-  "92",
-  "93",
-  "94",
-  "95",
-  "96",
-}
+local colors = {}
 
 local text =
   "\\    /\\     " .. machine .. "\n" ..
