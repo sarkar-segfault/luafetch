@@ -42,6 +42,16 @@ for i, v in ipairs(arg) do
     system = ""
   elseif v == "--no-date" then
     date = ""
+  elseif v == "--help" then
+    print("--help prints this")
+    print("--all uses all colors")
+    print("--none uses no colors")
+    print("--normal uses normal colors")
+    print("--bright uses bright colors")
+    print("--no-machine disables printing user@host")
+    print("--no-system disables printing the system info")
+    print("--no-date disables printing time and date info")
+    os.exit(0)
   else
     print("encountered invalid argument: ", v)
     os.exit(1)
