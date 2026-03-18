@@ -50,18 +50,41 @@ end
 
 local colors = {}
 
+if coloring == "all" or coloring == "normal" then
+  table.insert(colors, "31")
+  table.insert(colors, "32")
+  table.insert(colors, "33")
+  table.insert(colors, "34")
+  table.insert(colors, "35")
+  table.insert(colors, "36")
+elseif coloring == "all" or coloring == "bright" then
+  table.insert(colors, "91")  
+  table.insert(colors, "92")  
+  table.insert(colors, "93")  
+  table.insert(colors, "94")  
+  table.insert(colors, "95")  
+  table.insert(colors, "96")  
+end
+
 local text =
   "\\    /\\     " .. machine .. "\n" ..
   " )  ( ')    " .. string.rep("-", #machine) .. "\n" ..
   " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
   "  \\(__)|    " .. date
 
-math.randomseed(os.time())
+if coloring ~= "none" then
+  math.randomseed(os.time())
+end
 
 for i = 1, #text do
   local char = string.sub(text, i, i)
-  local color = "\27[" .. colors[math.random(#colors)] .. "m"
+  local color = ""
+  if coloring ~= "none" then
+    color = "\27[" .. colors[math.random(#colors)] .. "m"
+  end
   io.write(color .. char)
 end
 
-print("\27[0m")
+if coloring ~= "none" then
+  print("\27[0m")
+end
