@@ -27,7 +27,7 @@ end
 local date = os.date("%Y/%m/%d %H:%M:%S")
 local coloring = "all"
 
-for i, v in ipairs(args) do
+for i, v in ipairs(arg) do
   if v == "--all" then
     coloring = "all"
   elseif v == "--none" then
