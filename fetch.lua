@@ -25,6 +25,22 @@ if not system then
 end
 
 local date = os.date("%Y/%m/%d %H:%M:%S")
+local coloring = "all"
+
+for i, v in ipairs(args) do
+  if v == "--all" then
+    coloring = "all"
+  elseif v == "--none" then
+    coloring = "none"
+  elseif v == "--normal" then
+    coloring = "normal"
+  elseif v == "--bright" then
+    coloring = "bright"
+  else
+    print("encountered invalid argument: ", v)
+    os.exit(1)
+  end
+end
 
 local colors = {
   "31",
