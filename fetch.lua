@@ -1,5 +1,5 @@
-local user = os.getenv("USERNAME") or os.getenv("USER") or "unknown"
-local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "unknown"
+local user = os.getenv("USERNAME") or os.getenv("USER") or "<unknown>"
+local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "<unknown>"
 local machine = user .. "@" .. host
 
 local is_unix = true
