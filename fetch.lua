@@ -1,6 +1,7 @@
 local user = os.getenv("USERNAME") or os.getenv("USER") or "<unknown>"
 local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "<unknown>"
 local machine = user .. "@" .. host
+local sepline = string.rep("-", #machine)
 
 local is_unix = true
 if package.config:sub(1, 1) == "\\" then
@@ -42,6 +43,8 @@ for i, v in ipairs(arg) do
     system = ""
   elseif v == "--no-date" then
     date = ""
+  elseif v == "--no-sepline" then
+    sepline = ""
   elseif v == "--help" then
     print("--help prints this")
     print("--all uses all colors")
@@ -51,6 +54,7 @@ for i, v in ipairs(arg) do
     print("--no-machine disables printing user@host")
     print("--no-system disables printing the system info")
     print("--no-date disables printing time and date info")
+    print("--no-sepline disables the seperating line between machine and system+date")
     os.exit(0)
   else
     print("encountered invalid argument: ", v)
@@ -78,7 +82,7 @@ end
 
 local text =
   "\\    /\\     " .. machine .. "\n" ..
-  " )  ( ')    " .. string.rep("-", #machine) .. "\n" ..
+  " )  ( ')    " .. sepline .. "\n" ..
   " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
   "  \\(__)|    " .. date
 
