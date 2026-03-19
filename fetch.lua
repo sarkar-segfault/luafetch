@@ -31,7 +31,9 @@ if not system then
   os.exit(1)
 end
 
-local date = os.date("%Y/%m/%d %H:%M:%S")
+local date = os.date("%Y/%m/%d ")
+local time = os.date("%H:%M:%S")
+
 local coloring = "all"
 
 for i, v in ipairs(arg) do
@@ -49,6 +51,8 @@ for i, v in ipairs(arg) do
     system = ""
   elseif v == "--no-date" then
     date = ""
+  elseif v == "--no-time" then
+    time = ""
   elseif v == "--no-sepline" then
     sepline = ""
   elseif v == "--help" then
@@ -59,7 +63,8 @@ for i, v in ipairs(arg) do
     print("--bright uses bright colors")
     print("--no-machine disables printing user@host")
     print("--no-system disables printing the system info")
-    print("--no-date disables printing time and date info")
+    print("--no-date disables printing the date component")
+    print("--no-time disables printing the time component")
     print("--no-sepline disables the seperating line between machine and system+date")
     os.exit(0)
   else
@@ -90,7 +95,7 @@ local text =
   "\\    /\\     " .. machine .. "\n" ..
   " )  ( ')    " .. sepline .. "\n" ..
   " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
-  "  \\(__)|    " .. date
+  "  \\(__)|    " .. date .. time
 
 if coloring ~= "none" then
   math.randomseed(os.time())
