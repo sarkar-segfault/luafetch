@@ -1,5 +1,11 @@
-local user = os.getenv("USERNAME") or os.getenv("USER") or "<unknown>"
-local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME") or "<unknown>"
+local user = os.getenv("USERNAME") or os.getenv("USER")
+local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME")
+
+if not user or not host then
+  print("failed to obtain machine name, that is, user@host")
+  os.exit(1)
+end
+
 local machine = user .. "@" .. host
 local sepline = string.rep("-", #machine)
 
