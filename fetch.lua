@@ -14,7 +14,7 @@ if package.config:sub(1, 1) == "\\" then
   is_unix = false
 end
 
-local cmd = "powershell -Command \"(Get-CimInstance Win32_OperatingSystem).Caption\""
+local cmd = "wmic os get Caption | more +1"
 if is_unix then
   cmd = "uname -o"
 end
