@@ -1,3 +1,5 @@
+#!/usr/bin/env lua
+
 local user = os.getenv("USERNAME") or os.getenv("USER")
 local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME")
 
