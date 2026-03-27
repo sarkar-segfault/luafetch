@@ -38,7 +38,7 @@ local time = os.date("%H:%M:%S")
 
 local coloring = "all"
 
-for i, v in ipairs(arg) do
+for _, v in ipairs(arg) do
   if v == "--all" then
     coloring = "all"
   elseif v == "--none" then
@@ -85,19 +85,19 @@ if coloring == "all" or coloring == "normal" then
   table.insert(colors, "35")
   table.insert(colors, "36")
 elseif coloring == "all" or coloring == "bright" then
-  table.insert(colors, "91")  
-  table.insert(colors, "92")  
-  table.insert(colors, "93")  
-  table.insert(colors, "94")  
-  table.insert(colors, "95")  
-  table.insert(colors, "96")  
+  table.insert(colors, "91")
+  table.insert(colors, "92")
+  table.insert(colors, "93")
+  table.insert(colors, "94")
+  table.insert(colors, "95")
+  table.insert(colors, "96")
 end
 
 local text =
-  "\\    /\\     " .. machine .. "\n" ..
-  " )  ( ')    " .. sepline .. "\n" ..
-  " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
-  "  \\(__)|    " .. date .. time
+    "\\    /\\     " .. machine .. "\n" ..
+    " )  ( ')    " .. sepline .. "\n" ..
+    " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
+    "  \\(__)|    " .. date .. time
 
 if coloring ~= "none" then
   math.randomseed(os.time())
