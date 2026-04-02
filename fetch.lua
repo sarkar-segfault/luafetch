@@ -16,7 +16,7 @@ if package.config:sub(1, 1) == "\\" then
   is_unix = false
 end
 
-local cmd = "wmic os get Caption | more +1"
+local cmd = "ver"
 if is_unix then
   cmd = "uname -o"
 end
@@ -96,7 +96,7 @@ end
 local text =
     "\\    /\\     " .. machine .. "\n" ..
     " )  ( ')    " .. sepline .. "\n" ..
-    " (  /  )    " .. system:gsub("\n", "") .. "\n" ..
+    " (  /  )    " .. system:gsub("\r", ""):gsub("\n", "") .. "\n" ..
     "  \\(__)|    " .. date .. time
 
 if coloring ~= "none" then
