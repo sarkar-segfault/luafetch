@@ -1,7 +1,7 @@
 #!/usr/bin/env lua
 
-local user = os.getenv("USERNAME") or os.getenv("USER")
 local host = os.getenv("HOSTNAME") or os.getenv("COMPUTERNAME")
+local user = os.getenv("USERNAME") or os.getenv("USER")
 
 if not user or not host then
   print("failed to obtain machine name, that is, user@host")
@@ -114,4 +114,6 @@ end
 
 if coloring ~= "none" then
   print("\27[0m")
+else
+  print("")
 end
