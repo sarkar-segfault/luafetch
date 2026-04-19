@@ -68,7 +68,7 @@ for _, v in ipairs(arg) do
     print("--no-date disables printing the date component")
     print("--no-time disables printing the time component")
     print("--no-sepline disables the seperating line between machine and system+date")
-    print("invalid arguments cause the program to commit suicide; do at your own risk")
+    print("invalid arguments cause the program to commit suicide; pass at your own risk")
     os.exit(0)
   else
     print("encountered invalid argument: ", v)
