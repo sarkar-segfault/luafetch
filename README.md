@@ -7,3 +7,6 @@ it's way too badly written for use by others but i public'd it anyway lol
 
 ## usage
 what, you thought i'd provide a usage section? ok yeah maybe i should've, but then what's `--help` for?
+
+## run
+use `./fetch.lua` or `lua[jit] fetch.lua`
